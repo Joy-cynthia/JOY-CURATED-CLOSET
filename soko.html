@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>SokoMart Express /Supermarket&amp; Soko Errand Doorstep Delivery</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body { 
+        background-color: #f6fa77;
+        color:#163020;
+        line-height:1.6;
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 32px;
+        background-color: #ffffff;
+        border-bottom: 3px solid #f59e0b;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(22,48,32,0.08);
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .brand { 
+        font-size: 21px;
+        font-weight: 800;
+        color: #15803d;
+    }
+    .brand span {
+        color: #d97706;
+    }
+    .nav-links { 
+        display: flex;
+        gap: 18px;
+        list-style: none;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .nav-cta { 
+        background-color: #15803d;
+        text-decoration: none;
+        padding: 8px 18px;
+        color: #ffffff;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .hero { 
+        background: linear-gradient(135deg,#14532d,#15803d);
+        color: #ffffff;
+        text-align: center;
+        padding: 55px 20px;
+        border-bottom: 5px solid#f59e0b;
+    }
+    .hero h1 { 
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+    .hero p {
+        max-width:640px; 
+        margin:0 auto 20px auto;
+        color:#dcfce7;
+        font-size:16px;
+    }
+    .badge { 
+    display: inline-block;
+    background-color: rgba(245,158,11,0.22);
+    border: 1px solid #f59e0b;
+    color: #fde68a;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    }
+   .steps-section { 
+    max-width: 960px;
+    margin: 35px auto 10px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    }
+    .step-card { 
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    border-left: 5px solid #f59e0b;
+    box-shadow: 0.4px 12px rgba(20,83,45,0.06);
+    }
+    .step-card h3 { 
+    color: #14532d;
+    font-size: 17px;
+    margin-bottom: 6px;
+    }
+    .step-card p { 
+    font-size: 14px;
+    color: #4b5563;
+    }
+    .errand-box { 
+    max-width: 680px;
+    margin: 35px auto 50px auto;
+    background-color: #ffffff;
+    padding: 32px 26px;
+    border-radius: 18px;
+    border: 2px solid #15803d;
+    border-top: 6px solid #f59e0b;
+    box-shadow: 0 8px 24px rgba (20,83,45,0.1);
+    }
+    .errand-box h2 { 
+    color: #14532d;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 24px;
+    }
+    .subtitle { 
+    text-align: center;
+    color: #4b5563;
+    font-size: 14px;
+    margin-bottom: 20px;
+    }
+    .quick-label { 
+    font-size: 13px;
+    font-weight: 700;
+    color: #14532d;
+    margin-bottom: 8px;
+    }
+    .chips-wrap { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    }
+    .chip { 
+    background-color: #dcfce7;
+    color: #14532d;
+    border: 1px solid #86efac;
+    padding: 6px 12px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    }
+    .chip:hover { 
+    background-color: #f59e0b;
+    color: #163020;
+    border-color: #f59e0b;
+    }
+    label { 
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #163020;
+    margin-bottom: 6px;
+    }
+    input,select,textarea { 
+    width: 100%;
+    padding: 15px 16px;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    background-color: #f6faf7;
+    }
+    textarea { 
+    resize: vertical;
+    line-height: 1.5;
+    }
+    .fee-banner { 
+    background-color: #f0fdf4;
+    border: 1px dashed #15803d;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    color: #14532d;
+    }
+    .send-btn { 
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #14532d,#15803d);
+    color: #ffffff;
+    border: 2px solid #f59e0b;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+    .send-btn:hover { 
+    background: #f59e0b;
+    color: #163020;
+    }
+    footer { 
+    background-color: #14532d;
+    color: #dcfce7;
+    text-align: center;
+    padding: 24px;
+    border-top: 4px solid #f59e0b;
+    font-size: 14px;
+    }
+ .whatsapp-float { 
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #ffffff;
+            padding: 14px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s; 
+    }
+    .whatsapp-float:hover { 
+            background-color: #1ebe5d;
+            transform: scale(1.06);
+    }    
+</style> 
+</head>
+<body>
+<nav class="navbar">
+<div class="brand">SokoMart<span>Express</span></div>
+<a href="#errandForm"class="nav-cta">Send Shopping List<a>
+</nav>
+<header class="hero">
+<span class="badge">PERSONAL SOKO &amp; SUPERMARKET ERRAND RUNNERS</span>
+<h1>SHOPPING MADE EASY &amp; CONVINIENT!  </h1>
+<p> Too busy to beat traffic or stand in supermarket queues? Write your exact shopping list below and our trusted errand runner picks every item fresh and delivers straight to your gate.</p>
+</header> 
+<section class="steps-section">
+<div class="step-card">
+<h3>1.Write Your List📝</h3>
+<p>Type anything you need. From fresh veggies, groceries, food items and snacks,  basic household supplies, anything you need we gat you!</p>
+</div>
+<div class="step-card">
+<h3>2.We shop &amp; Send Receipt</h3> 
+<p>Our runner shops at your chosen super supermarket or soko market and sends you the official till receipt photo on Whatsapp.</p>
+</div>
+<div class="step-card">
+<h3>3.Gate Delivery 🛵</h3>
+<p>Pay items cost + errand fee via M-pesa and receive your groceries and household supply right at your doorstep.</p> 
+</div>
+</section>
+<section id="errandForm"class="errand-box">
+<h2>Book a Grocery Errand</h2>
+<label for="shoppingList">Write Your Shopping List down below:</label>
+<textarea id="shoppingList"rows="6"placeholder="Write everything you want our runner to buy (e,g., tomatoes, maize flour, toiletries, foodstuffs, bar soap, snacks etc.)"></textarea>
+<label for="storeChoice">Preferred Supermarket/Market:</label> 
+<select id="storeChoice">
+<option value="Naivas Supermarket + Fresh Mama Mboga Soko"> Naivas Supermarket+Fresh Mama Mboga Soko</option>
+<option value="Quickmart Supermarket + Fresh Mama Mboga Soko">Quickmart Supermarket + Fresh Mama Mboga Soko</option>
+<option value="Carrefour Supermarket + Fresh Mama Mboga Soko">Carrefour Supermarket + Fresh Mama Mboga Soko</option>
+<option value="Cleanshelf Supermarket + Fresh Mama Mboga Soko">Cleanshelf Supermarket + Fresh Mama Mboga Soko</option>
+<Option value="Fresh Mama Mboga Soko Only">Fresh Mama Mboga Soko Only</Option>
+<option value="Naivas Supermarket Only">Naivas Supermarket Only</option>
+<option value="Quickmart Supermarket Only">Quickmart Supermarket Only</option>
+<option value="Carrefour Supermarket Only">Carrefour Supermarket Only</option>
+<option value="Cleanshelf Supermarket Only">Cleanshelf Supermarket Only</option>
+</select>
+<label for="deliveryZone">Delivery Area &amp; Errand Fee</label>
+<select id="deliveryZone">
+<option value="Ongata Rongai(Maasai Lodge / Tumaini)-Errand Fee:KES 150">Ongata Rongai (Maasai Lodge / Tumaini)- Errand Fee: KES 150</option>
+<option value="Ongata Rongai(Tuskys / Kwaree / Exciting)- Errand Fee: KES 200">Ongata Rongai (Tuskys / Kwaree / Exciting area)- Errand Fee: KES 200</option>
+<option value="Nairobi Area(Lang'ata / Karen)-Errand Fee:KES 250">Nairobi Area (Lang'ata / Karen)- Errand Fee: KES 250</option>    
+</select>  
+<div class="fee-banner">
+💡<strong>How Payment Works:</strong>Pay the exact supermarket or Soko receipt amount + our flat errand fee via M-Pesa once our runner confirms your items at the store.
+</div>
+<label for="custName">Your Name:</label>
+<input type="text"id="custName"placeholder="Your Full Name"required>
+<label for="custAddress">Delivery Area/ Estate/ Apartment/ House No. &amp;Landmark:</label>
+<textarea id="custAddress" rows="2"placeholder="e.g.,   Tumaini Area, Olencharos apartment,House No.2, (Near Starehe butchery)"required></textarea>
+<button type="button"class="send-btn"onclick="sendErrandWhatsapp()">📲 Send Shopping List Whatsapp</button>
+</section>
+<footer>
+    <p>&copy; 2026 <strong>SokoMart Express</strong>/ Supermarket &amp;Soko Errand Runners. Whatsapp:<strong>0769385942</strong></p>
+    </footer>
+    <script>
+    function quickAdd(itemText){ 
+    const box = document.getElementById("shoppingList");
+    if(box.value===""){ 
+        box.value="-"+ itemText;
+    } else { 
+        box.value=box.value + "\n- " + itemText;
+         }
+     }
+     function sendErrandWhatsapp(){ 
+        const list= document.getElementById("shoppingList").value;
+        const name= document.getElementById("custName").value;
+        const address= document.getElementById("custAddress").value;
+    if (list==="") { 
+        alert("Please type or tap at least one item for your shopping list");
+        return;
+    }
+    if (name===""|| address==="" ) { 
+        alert("Please enter your name and delivery landmark");
+        return;
+    }
+    const store= document.getElementById("storeChoice").value;
+    const zone= document.getElementById("deliveryZone").value;
+    const message="Hello SokoMart Express. I would like to book a shopping errand:\n\n"
+    + " Customer: " + name + "\n"
+    + " Delivery Area: " + address + "\n"
+    + "Preferred Store: " + store + "\n"
+    + "Zone & Fee: " + zone + "\n\n" 
+    + "My Shopping List: \n" + list;
+
+    const WhatsappURL="https://wa.me/254769385942?text="+ encodeURIComponent(message);
+window.location.href=WhatsappURL;
+    }
+     </script>
+ <a href="https://wa.me/254769385942?text=" class="whatsapp-float" target="_blank">
+        💬 Chat on WhatsApp
+        </a>
+</body> 
+</html>  
+                                                                                                 
+
+
+
