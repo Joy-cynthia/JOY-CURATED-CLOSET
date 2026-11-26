@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>Joy Cynthia/ frontend Developer, Digital Creator&amp;Entreprenuer</title>
+<style>
+ * { 
+   margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segeo UI',Tahoma, Geneva, Verdana, sana-serif;
+ }
+ body { 
+    background-color: #f4f7f6;
+    color: #162a24;
+    line-height: 1.6;
+ }
+ .navbar { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 34px;
+    background-color: #0b2e24;
+    border-bottom: 3px solid #d4af37;
+    position: sticky;
+    top:0;
+    z-index: 100;
+    flex-wrap: wrap;
+    gap: 12px;
+ }
+ .brand { 
+    font-size: 21px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+ }
+ .brand-span { 
+    color: #d4af37;
+ }
+ .nav-links { 
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+    flex-wrap: wrap;
+ }
+ .nav-links a { 
+    text-decoration: none;
+    color: #e2ede9;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.2s;
+ }
+.nav-links a:hover { 
+    color: #d4af37;
+}
+.hire-pill { 
+    background-color: #d4af37;
+    color: #0b2e24 !important;
+    padding: 8px 18px;
+    border-radius: 22px;
+    font-weight: 800 !important;
+}
+.hero { 
+    background: linear-gradient(135deg, #0b2e24,#164e3e);
+    color: #ffffff;
+    text-align: center;
+    padding: 75px 20px;
+    border-bottom: 5px solid #d4af37;
+}
+.status-badge { 
+    display: inline-block;
+    background-color: rgba(212, 175, 55, 0.18);
+    border: 1px solid #d4af37;
+    color: #f5df8d;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.hero h1 { 
+    font-size: 38px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+}
+.hero p { 
+    max-width: 680px;
+    margin: 0 auto 28px auto;
+    color: #d3e5df;
+    font-size: 17px;
+}
+.hero-btns { 
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.btn-gold { 
+    background-color: #d4af37;
+    color: #0b2e24;
+    text-decoration: none;
+    padding: 13px 26px;
+    border-radius: 26px;
+    font-weight: 800;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.btn-gold:hover { 
+    background-color: #ffffff;
+}
+.btn-outline { 
+    border: 2px solid #d4af37;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 11px 24px;
+    border-radius: 26px;
+    font-weight: 700;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.btn-outline:hover { 
+    background-color: #d4af37;
+    color: #0b2e24;
+}
+.container { 
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+.section-title { 
+    text-align: center;
+    font-size: 28px;
+    color: #0b2e24;
+    margin-bottom: 10px;
+}
+.section-title { 
+    text-align: center;
+    font-size: 28px;
+    color: #0b2e24;
+    margin-bottom: 10px;
+}
+.section-sub { 
+    text-align: center;
+    color: #526b63;
+    font-size: 15px;
+    margin-bottom: 26px;
+}
+.filter-bar { 
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+.filer-btn { 
+    background-color: #ffffff;
+    color: #0b2e24;
+    border: 2px solid #c3d6cf;
+    padding: 8px 18px;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.filter-btn,active,.filer-btn:hover { 
+    background-color: #0b2e24;
+    color: #d4af37;
+    border-color: #d4af37;
+}
+.projects-grid { 
+    display: grid;
+    grid-template-columns: repeat (auto-fit,minimax(260px, 1fr));
+    gap: 24px;
+}
+.project-card { 
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 26px;
+    border: 1px solid #d7e4df;
+    border-top: 5px solid #d4af37;
+    box-shadow: 0 8px 20px rgba(11,46,36,0.07);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease;
+}
+.project-card:hover { 
+    transform: translateY(-5px);
+}
+.tag { 
+    display: inline-block;
+    background-color: #e6f2ee;
+    color: #0b2e24;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+.project-card h3 { 
+    font-size: 20px;
+    color: #0b2e24;
+    margin-bottom: 10px;
+}
+.project-card p { 
+    font-size: 14px;
+    color: #4a635b;
+    margin-bottom: 16px;
+}
+.tech-stack { 
+    font-size: 12px;
+    font-weight: 700;
+    color: #8a6d1b;
+    margin-bottom: 18px;
+}
+.launch-link { 
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg,#0b2e24,#164e3e);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 24px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid #d4af37;
+    transition: 0.25s;
+}
+.launch-link:hover { 
+    background: #d4af37;
+    color: #0b2e24;
+}
+.skills-box { 
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 36px 28px;
+    border: 1px solid #d7e4df;
+    margin-top: 50px;
+    box-shadow: 0 6px 18px rgba(11,46,36,0.06);
+}
+.skills-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minimax(220px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+.skill-item { 
+    background-color: #f4f8f6;
+    padding: 18px;
+    border-radius: 12px;
+    border-left: 4px solid #d4af37;
+}
+.skill-item h4 { 
+    color: #0b2e24;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+.skill-item p { 
+    font-size: 13px;
+    color: #4a635b;
+}
+.contact-cta { 
+    background: linear-gradient(135deg,#0b2e24,#164e3e);
+    color: #ffffff;
+    text-align: center;
+    padding: 48px 24px;
+    border-radius: 20px;
+    margin-top: 50px;
+    border: 2px solid#d4af37;
+}
+.contact-cta h2 { 
+    font-size: 26px;
+    margin-bottom: 10px;
+} 
+.contact-cta p { 
+    color: #d3e5df;
+    max-width: 580px;
+    margin: 0 auto 22px auto;
+    font-size: 15px;
+}
+footer { 
+    background-color: #0b2e24;
+    color: #c5dbd4;
+    text-align: center;
+    padding: 24px;
+    margin-top: 60px;
+    border-top: 4px solid#d4af37;
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand">JOY<span></div>
+    <ul class="nav-links">
+    <li><a href="#projects">Live Projects(4)</a></li>
+    <li><a href="#skills">Skills & amp;Experience</a></li>
+    <li><a href="#contact"class="hire-pill">🤝 Hire/ Collaborate</a></li>
+    </ul>
+    </nav>
+    <header class="hero">
+    <span class="status-badge">📍 NAIROBI / ONGATA RONGAI. AVAILABLE FOR REMOTE WORK &amp; WEB projects </span>
+    <h1>Frontend Web Builder, AI Data Annotator &amp;Digital Entreprenuer</h1>
+    <p>Hi, I'm <strong>Joy Cynthia</strong>. I build clean, mobile-first web applications that solve real everyday problems-from Whatsapp-integrated e-commerce storefronts and errand logistics platforms to personal finance dashboards and community impact portals.</p>
+    <div class="hero-btns">
+    <a href="#projects"class="btn-gold">🚀 Explore My 3 Live Apps</a>
+    <a href="https://wa.me/254769385942?text="target="_blank"class="btn-outline">📲 Connect on Whatsapp</a>
+    </div>
+    </header>
+    <main class="container">
+    <section id="projects">
+    <h2 class="section-title">💼 Live Web Applications</h2>
+    <p class="section-sub">Filter by category or launch any live application directly in your browser.</p>
+    <div class="filter-bar">
+    <button type="button"class="filter-btn active"onclick="filterProjects('all',this)">All Projects(4)</button>
+    <button type="button"class="filter-btn"onclick="filterProjects('ecommerce',this)">E-Commerce &amp; Logistics</button>
+    <div class="projects-grid">
+    <div class="project-card"data-category="ecommerce">
+    <div>
+    <span class="tag">E-COMMERCE</span>
+    <h3>👗 JOY CURATED CLOSET</h3>
+    <P>Mobile-first fashion boutique storefront with responsive product grids,pricing displays, and one-tap Whatsapp instant order routing</P>
+    <p class="tech-stack">HTML5.CSS3 GRID. Whatsapp API Link</p>
+    </div>
+    <a href="shop.html" class="launch-link">Launch Live Store-></a>  
+    </div> 
+    <div class="project-card"data-category="ecommerce"> 
+    <div>
+    <span class="tag">COMMUNITY IMPACT</span>
+    <h3>🤝 Joy Cynthia Foundation</h3>
+    <p> Community outreach and volunteer registration portal equipped with copy-ready M-PESA Paybill donation cards and direct Whatsapp volunteer onboarding.</p>
+    <p class="tech-stack">HTML5.Responsive UI.Interactive Forms</p>
+    </div>
+    <a href="foundation.html"class="launch-link">Launch Foundation Portal-></a>
+    </div> 
+    <div class="project-card"data-category="ecommerce"> 
+    </div>
+    <span clss="tag">ON-DEMAND LOGISTICS</span>
+    <h3>🛵 SokoMart Express</h3>
+    <p>Personal supermarket and Mama Mboga errand concierge featuring quick-tap staple chips, dynamic delivery zone fees and automated Whatsapp shopping lists.</p>
+    <p class="tech-stack">HTML5.CSS3.JavaScript DOM Manipulation</p>
+    </div>
+    </div>
+    <a href="soko.html"class="launch-link">Launch SokoMart App-></a> 
+</div> 
+</section>
+<section id="skills"class="skills-box">
+    <h2 class="section-title">⚡Core Skills &amp;Digital Strengths</h2>
+    <p class="section-sub">Combining hands-on coding execution with disciplined remote workflow experience.</p>
+    <div class="skills-grid">
+    <div class="skill=item">
+    <h4>💻 Frontend Web development</h4>
+    <p> Sematic HTML5, responsive CSS3 Flexbox &amp; Grid layouts, interactive JavaScript DOM apps, and Github Pages deployment.</p>
+    </div>
+    <div class="skill-item">
+    <h4>🤖 AI Data Annotation &amp;QA</h4>
+    <p>High-accuracy coding &amp;data labelling workflows with strong attention to detail, quality compliance and deadline consistency.<p>
+    </div>
+    <div class="skill-item">
+    <h4>🛍️ E-commerce &amp;Operations</h4>
+    <p>End-to-end digital storefront management, Whatsapp customer conversion funnels and local delivery logistics</p>
+    </div>
+     </div>
+    <div class="skill-item">
+    <h4>🎬 Digital Content Creation</h4>
+    <p>Creator of content on YouTube-video scripting, mobile/cloud editing, audience engagement and brand storytelling.</p>
+    </div>
+</section>
+<section id="contact"class="contact-cta">
+    <h2>Ready to Build Something Great Together?</h2>
+    <p>Available for remote data annotation,virtual assistance,custom small-business websites, and digital content collaborations.</p>
+    <a href="https://wa.me/254769385942?text="target="_blank"class="btn-gold">Message me on Whatsapp(0769385942)</a>
+    </section>
+    </main>
+    <footer>
+    <p>&copy;2026 <strong>Joy Cynthia</strong>/ Built with HTML5,CSS3 &amp;JavaScript.Deployed on Github Pages</p>
+    </footer>
+    <script>
+        function filterProjects(category, clickedBtn) {
+            const buttons = document.querySelectorAll(".filter-btn");
+            buttons.forEach(btn => btn.classList.remove("active"));
+            clickedBtn.classList.add("active");
+
+            const cards = document.querySelectorAll(".project-card");
+            cards.forEach(card => {
+                if (category === "all" || card.getAttribute("data-category") === category) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+            </script>
+            </body>
+            </html>
+      
+    
+
+    
