@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>Joy Cynthia | Interactive Digital CV &amp; Resume</title>
+<style>
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body { 
+    background-color: #eef3f1;
+    color: #162a24;
+    line-height: 1.6;
+    padding: 25px 15px 50px 15px;
+}
+.toolbar { 
+    max-width: 850px;
+    margin: 0 auto 20px auto;
+    background-color: #0b2e24;
+    padding: 14px 20px;
+    border-radius: 14px;
+    border: 2px solid #d4af37;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.track-btns { 
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.track-btn { 
+    background-color: transparent;
+    color: #e2ede9;
+    border: 1px solid #d4af37;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.track-btn.active,.track-btn:hover { 
+    background-color: #ffffff;
+    color: #0b2e24;
+}
+.print-btn { 
+    background-color: #ffffff;
+    color: #0b2e24;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+.print-btn:hover { 
+    background-color: #d4af37;
+}
+.cv.sheet { 
+    max-width: 850px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(11,46,36,0.12);
+    overflow: hidden;
+    border-top: 6px solid #d4af37;
+}
+.cv-header { 
+    background: linear-gradient(135deg,#0b2e24,#164e3e);
+    color: #ffffff;
+    padding: 36px 40px;
+    border-bottom: 4px solid #d4af37;
+}
+.cv-header h1 { 
+    font-size: 32px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+.cv-role { 
+    color: #f5df8d;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.contact-bar { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: #d3e5df;
+}
+.contact-bar a { 
+    color: #f5df8d;
+    text-decoration: none;
+    font-weight: 600;
+}
+.cv-body { 
+    padding: 32px 40px;
+}
+.cv-section { 
+    margin-bottom: 26px;
+}
+.cv-section h2 { 
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0b2e24;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+}
+.summary-text { 
+    font-size: 15px;
+    color: #2f4740;
+}
+.skills-pills { 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.pill { 
+    background-color: #eef5f2;
+    color: #0b2e24;
+    border: 1px solid #c3d6cf;
+    padding: 6px 13px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 700;
+}
+.exp-item { 
+    margin-bottom: 18px;
+}
+.exp-top { 
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+}.exp-top h3 { 
+    font-size: 16px;
+    color: #0b2e24;
+}
+.exp-date { 
+    font-size: 13px;
+    font-weight: 700;
+    color: #8a6d1b;
+}
+.exp-sub { 
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a635b;
+    margin-bottom: 6px;
+}
+.exp-item ul { 
+    padding-left: 20px;
+    font-size: 14px;
+    color: #2f4740;
+}
+.exp-item li { 
+    margin-bottom: 4px;
+}
+.projects-mini { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minimax(230px, 1fr));
+    gap: 12px;
+}
+.mini-card { 
+    background-color: #f7faf9;
+    padding: 14px;
+    border-radius: 10px;
+    border-left: 4px solid #d4af37;
+}
+.mini-card h4 { 
+    font-size: 14px;
+    color: #0b2e24;
+    margin-bottom: 4px;
+}
+.mini-card p { 
+    font-size: 13px;
+    color: #4a635b;
+}
+/*CLEAN PDF / PRINT STYLING */
+@media print { 
+    body { 
+        background-color: #ffffff;
+        padding: 0;
+    }
+    .toolbar { 
+        display: none !important;
+    }
+    .cv-sheet { 
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="toolbar">
+    <div class="track-btns">
+        <button type="button"class="track-btn active"onclick="switchTrack('tech',this)">🤖 Tech, Web &amp;AI Annotation CV</button>
+        <button type="button"class="track-btn"onclick="switchTrack('business',this)">🛍️ E-Commerce &amp;Operations CV</button>
+        </div>
+        <button type="button"class="print-btn"onclick="window.print()">🖨️Download/ Save as PDF</button>
+        </div>
+        <div class="cv-sheet">
+        <header class="cv-header">
+        <h1>JOY CYNTHIA</h1>
+        <p id="roleHeadline"class="cv-role">Frontend Web Developer.AI Data Annotator.Quality Assurance Specialist</p>
+        <div class="contact-bar">
+        <span>📍 Nairobi/ Ongata Rongai, Kenya</span>
+        <span>📞 0769385942 </span>
+        <span>🌐 <a href="portfolio.html">Live Portfolio Hub</a></span>
+        </div>
+        </header>
+        <div class="cv-body">
+        <section class="cv-section">
+        <h2>Professional Summary</h2>
+        <p id="summaryContent"class="summary-text">Detail-oriented AI Data Annotator and Frontend Web Builder with hands-on experience designing, coding and deploying responsive HTML5, CSS3 and JavaScript Web applications.Proven track record maintai</p>       
+        </section>
+        <section class="cv-section">
+        <h2>Core Competencies</h2>
+        <div id="skillsContainer"class="skills-pills">
+        <span class="pill">HTML5 &amp;Sematic Markup</span>
+        <span class="pill">HTML5 &amp;Sematic Markup</span>
+        <span class="pill">CSS3 Flexbox &amp;(DOM &amp;Events)</span>
+        <span class="pill">AI Coding &amp;Dat Annotation</span>
+        <span class="pill">Github Pages Deployment</span>
+        <span class="pill">Quality Assurance &amp;Debugging</span>
+        <spna class="pill">Whatsapp API Integration</spna>
+        </div>
+        </section>
+        <section class="cv-section">
+            <h2>Experience &amp;Digital Ventures</h2>
+            <div class="exp-top">
+            <h3>AI Coding &amp;Data Annotation specialist</h3>
+            <span class="exp-date">2025-Present(Remote)</span>
+            </div>
+            <p class="exp-sub">Loggy3/ Remote AI Training Workflows</p>
+            <ul>
+            <li>Execute structured coding and web development sessions with strict adherence to quality guidelines and time-interval logging.</li>
+            <li>Build, debug and verify functional frontend interfaces across HTML5, CSS3 and vanilla JavaScript.</li>
+            </ul>
+        </div>
+        <div class="exp-item">
+            <div class="exp-item">
+                <h3>Founder &amp;Frontend Developer</h3>
+                <span class="exp-date">2026-Present.Nairobi / Ongata Rongai</span>
+                </div>
+                <p class="exp-sub">JOY CURATED CLOSET &amp;SokoMART Express</p>
+                <ul>
+                <li>Archiected and deployed 5 interconnected web applications on Github Pages, including an e-commerce fashion storefront and on-demand grocery errand plattform.</li>
+                <li>Engineered automated Whatsapp order checkout links and dynamic zone-based delivery calculators to stramline customer conversations.</li>
+                </ul>
+                </div>
+                <div class="exp-item">
+                <div class="exp-top">
+                <h3>Digital Content Creator &amp; Video Producer</h3>
+                <span class="exp-date">2026</span>
+                </div>
+                <p class="exp-sub">Youtube</p>
+                <ul>
+                <li>Script, film, edit and publish engaging comedy content, scaling audience growth to 270+ subscribers and 7300+watch hours.</li>
+                </ul>
+                </div>
+            </section>
+            <section class="cv-section">
+                <h2></h2>Deployed Web Porfolio</h2>
+                <div class="projects-mini">
+                <div class="mini-card">
+                <h4>👗 JOY CURATED CLOSET</h4>
+                <p>Responsive fashion boutique with instant Whatsapp checkout.</p>
+                </div>
+                <div class="mini-card">
+                <h4>🤝 JOY CYNTHIA FOUNDATION</h4>
+                <p> Community outreach &amp; M-PESA Paybill volunteer portal.</p>
+                </div>
+                <div class="mini-card">
+                <h4>🛵 SokoMart Express</h4>
+                <p>Supermarket &amp;soko erand concierge with quick-tap list builder.</p>
+                </div> 
+                </section>
+                </div>
+                <script>
+                    function switchTrack(track,clickedBtn) { 
+                        const buttons=document.querySelectorAll(".track-btn");
+                        buttons.forEach(btn=>btn.classList.remove("active"));
+                        clickedBtn.classList.add("active");
+
+                        const roleEl=document.getElementById("roleHeadline");
+                        const summaryEl=document.getElementById("summaryContent");
+                        const skillsEl=document.getElementById("skillsContainer");
+
+                        if (track==="tech") { 
+                            roleEl.innerText="Frontend Web Developer.AI Data Annoator.Quality Assurance Specialist";
+                            summaryEl.innerText="Detail-oriented AI Data Annotator and Frontend Web Builder with hands-on experience designing, coding and deploying responsive HTML5, CSS3, and JavaScript web applications.Proven track record maintaining high quality compliance in remote coding annotation workflows while shipping practical digital tools for e-commerce, logistics and personal finance,";
+                            skillsEl.innerHTML=`
+                            <span class="pill">HTML5 &amp;Semantic Markup</span>
+                            <span class="pill">CSS3 Flexbox &amp;Grid</span>
+                            <span class="pill">JavaScript(DOM &amp; Events)</span>
+                            <span class="pill">AI Coding &amp; Data Annotation</span>
+                            <span class="pill">Github Pages Deployment</span>
+                            <span class="pill">Quality Assurance &amp;Debugging</span>
+                            <span class="pill">Whatsapp API Integration</span>
+                            `; 
+                             } else { 
+                              roleEl.innerText="E-Commerce Founder.Digital Operations Manager. Content Strategist";
+                              summaryEl.innerText="Resourceful digital entrepreneuer and operations builder experienced in launching online retail storefronts, local errand logistics and high-engagement social video channels. Skilled in customer conversion funnels, inventory-free errand fulfilment and digital brand storytelling.";
+                                  skillsEl.innerHTML=`
+                                  <span class="pill">E-Commerce Storefront Operations</span>
+                                  <span class="pill">Customer Service &amp; Whatsapp Funnels</span>
+                                  <span class="pill">Local Delivery &amp; Errand Logistics</span>
+                                  <span class="pill">Video Scripting &amp; Editing</span>
+                                  <span class="pill">Social Media Audience Growth</span>
+                                  <span class="pill">Financial Budgeting &amp; Allocation</span>
+                                   `;
+                             }
+                          }
+                          </script>
+                          </body>
+                          </html> 
+                      
